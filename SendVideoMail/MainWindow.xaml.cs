@@ -21,17 +21,19 @@ namespace SendVideoMail
     public partial class MainWindow : Window
     {
         SharedAPI sharedAPI;
-        const string serverURL = "\\SHKO\sh_공유폴더";
+        const string serverURL = @"\\SHKO\sh_공유폴더";
 
         public MainWindow()
         {
             InitializeComponent();
+            connectShareFolder();
         }
 
         private void connectShareFolder()
         {
-            sharedAPI.ConnectRemoteServer(serverURL);
-
+            sharedAPI = new SharedAPI();
+            int result = sharedAPI.ConnectRemoteServer(serverURL);
+            MessageBox.Show("result  " + result);
         }
 
     }
