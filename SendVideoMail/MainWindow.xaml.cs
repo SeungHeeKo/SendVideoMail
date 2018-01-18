@@ -22,6 +22,8 @@ namespace SendVideoMail
     {
         SharedAPI sharedAPI;
         const string serverURL = @"\\SHKO\sh_공유폴더";
+        const string serverID = "SEUNGHEEKO";
+        const string serverPW = "sh";
 
         public MainWindow()
         {
@@ -32,8 +34,9 @@ namespace SendVideoMail
         private void connectShareFolder()
         {
             sharedAPI = new SharedAPI();
-            int result = sharedAPI.ConnectRemoteServer(serverURL);
-            MessageBox.Show("result  " + result);
+            int result = sharedAPI.ConnectRemoteServer(serverURL, serverID, serverPW);
+            //MessageBox.Show("result  " + result);
+            sharedAPI.GetShareFolderFile(@"C:\PhotoZone_Result\test\");
         }
 
     }
